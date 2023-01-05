@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="breadcrumb-area">
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center">
+            <h2>ABOUT US</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">About</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="team-area section-padding-100-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>OUR TEAM</h2>
+                        <p>Group 6 BSIT 4 - A</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member text-center mb-100">
+                        <div class="team-member-thumb">
+                            <img src="{% static 'img/bg-img/z3.png' %}" alt="">
+                        </div>
+                        <div class="team-member-info mt-30">
+                            <h5>Olsen Leo Francisco</h5>
+                            <p>Developer</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member text-center mb-100">
+                        <div class="team-member-thumb">
+                            <img src="{% static 'img/bg-img/z1.png' %}" alt="">
+                        </div>
+                        <div class="team-member-info mt-30">
+                            <h5>Charina Gracio</h5>
+                            <p>Documentation</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-lg-3">
+                    <div class="single-team-member text-center mb-100">
+                        <div class="team-member-thumb">
+                            <img src="{% static 'img/bg-img/z2.png' %}" alt="">
+                        </div>
+                        <div class="team-member-info mt-30">
+                            <h5>Lovely Angel Lumonsay</h5>
+                            <p>Documentation</p>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+        </div>
+    </section>
+{% endblock content %}

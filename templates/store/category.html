@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="breadcrumb-area">
+    <!-- Top Breadcrumb Area -->
+    <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center">
+        <h2>Get Started</h2>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Category</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class = "container">
+    <header>
+      <p class="small text-muted small text-uppercase mb-1">Recommended Crops</p>
+      <h2 class="h5 text-uppercase mb-4">Best crops for planting </h2>
+    </header>
+    <h4 class = "text-center"><i>For the dates of: <span>{{format_date_1}} - {{format_date_30}}</span></i></h4>
+    <br>
+    <div class = "row">
+      <div class="col-sm-6">
+      <div class = "card mb-4">
+        <div class = "card-header justify-content-center text-center">
+          <br>
+          <h5>Total number of Rainy Days:</h5><br>
+          <h6><i>{{total_rain}}</i></h6>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+        <div class = "card mb-4">
+          <div class = "card-header justify-content-center text-center">
+            <br>
+            <h5>Total number of Sunny Days:</h5><br>
+            <h6><i>{{total_dry}}</i></h6>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+        {% if total_rain < total_dry %}
+            {% for crop in crops_dry %}
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="crop text-center">
+                <div class="position-relative mb-3">
+
+                  <div class="badge text-white badge-"></div>
+                  
+                  <a class="d-block" href="{% url 'farms:crop-detail' crop.slug %}">
+                    {% if crop.crop_image %}
+                      <img class="img-fluid w-100" src="{{ crop.crop_image.url }}" alt="{{crop.title}}">
+                    {% else %}
+                      <img class="img-fluid w-100" src="{% static 'images/favicon.png' %}" alt="{{crop.title}}">
+                    {% endif %}
+                  </a>
+
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+        {% else %}
+        {% for crop in crops_rainy %}
+        <div class="col-xl-3 col-lg-4 col-sm-6">
+          <div class="crop text-center">
+            <div class="position-relative mb-3">
+
+              <div class="badge text-white badge-"></div>
+              
+              <a class="d-block" href="{% url 'farms:crop-detail' crop.slug %}">
+                {% if crop.crop_image %}
+                  <img class="img-fluid w-100" src="{{ crop.crop_image.url }}" alt="{{crop.title}}">
+                {% else %}
+                  <img class="img-fluid w-100" src="{% static 'images/favicon.png' %}" alt="{{crop.title}}">
+                {% endif %}
+              </a>
+
+            </div>
+          </div>
+        </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <hr>
+    <header>
+        <p class="small text-muted small text-uppercase mb-1">Made For You</p>
+        <h2 class="h5 text-uppercase mb-4">List of crops</h2>
+      </header>
+      <div class="row">
+          {% for crop in crops %}
+          
+            <!-- crop-->
+            <div class="col-xl-3 col-lg-4 col-sm-6">
+              <div class="crop text-center">
+                <div class="position-relative mb-3">
+
+                  <div class="badge text-white badge-"></div>
+                  
+                  <a class="d-block" href="{% url 'farms:crop-detail' crop.slug %}">
+                    {% if crop.crop_image %}
+                      <img class="img-fluid w-100" src="{{ crop.crop_image.url }}" alt="{{crop.title}}">
+                    {% else %}
+                      <img class="img-fluid w-100" src="{% static 'images/favicon.png' %}" alt="{{crop.title}}">
+                    {% endif %}
+                  </a>
+                  <a href="{% url 'farms:crop-detail' crop.slug %}">
+                    <p>{{crop.title}} <br><span>{{crop.category}}</span></p>
+                </a>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+</div>
+{% endblock content %}

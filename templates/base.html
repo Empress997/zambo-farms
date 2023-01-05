@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang = "en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block metatitle %}ZAMBOANGA FARMS{% endblock metatitle %}</title>
+
+    <link rel="shortcut icon" href="{% static 'img/core-img/leaf.png' %}">
+
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class = "page-holder">
+        {% include 'navbar.html' %}
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-circle"></div>
+            <div class="preloader-img">
+                <img src={%static "img/core-img/leaf.png" %} alt="">
+            </div>
+        </div>
+        {% block content %}
+        {% endblock content %}
+        {% include 'footer.html' %}
+        <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/plugins/plugins.js' %}"></script>
+        <script src="{% static 'js/active.js' %}"></script>
+    </div>
+</body>
+</html>

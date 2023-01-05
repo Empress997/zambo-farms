@@ -1,0 +1,66 @@
+{% load static %}
+<header class = "header-area">
+    <div class="alazea-main-menu">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="alazeaNav">
+
+                    <!-- Nav Brand -->
+                    <a href="index.html" class="nav-brand">ZAMBOANGA FARMS</a>
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Navbar Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li><a href="{% url 'farms:home' %}">Home</a></li>
+                                <li><a href="{% url 'farms:about' %}">About</a></li>
+                                <li><a href="#">Pages</a>
+                                    <ul class="dropdown">
+                                        <li><a href="{% url 'farms:home' %}">Home</a></li>
+                                        <li><a href="{% url 'farms:about' %}">About</a></li>
+                                        <li><a href="{% url 'farms:contact' %}">Contact</a></li>
+                                        <li><a href="{% url 'farms:services' %}">Weather Forecast</a></li>
+                                        <li><a href="{% url 'farms:advisories' %}">Weather Advisories</a></li>
+                                        {% if user.is_staff %}
+                                        <li><a href="{% url 'farms:news' %}">Create News</a></li>
+                                        {% endif %}
+                                    </ul>
+                                </li>
+                                <li><a href="{% url 'farms:contact' %}">Contact</a></li>
+                            </ul>
+
+                            <!-- Search Icon -->
+                            <div id="searchIcon">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </div>
+
+                        </div>
+                        <!-- Navbar End -->
+                    </div>
+                </nav>
+
+                <!-- Search Form -->
+                <div class="search-form">
+                    <form action="#" method="get">
+                        <input type="search" name="search" id="search" placeholder="Type keywords &amp; press enter...">
+                        <button type="submit" class="d-none"></button>
+                    </form>
+                    <!-- Close Icon -->
+                    <div class="closeIcon"><i class="fa fa-times" aria-hidden="true"></i></div>
+                </div>
+            </div>
+        </div>
+</header>

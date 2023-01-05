@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    
+    <div class="breadcrumb-area">
+
+        <div class="top-breadcrumb-area bg-img bg-overlay d-flex align-items-center justify-content-center">
+            <h2>{{crop.title}}</h2>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">{{crop.title}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="single_product_details_area mb-50">
+        <div class="produts-details--content mb-50">
+            <div class="container">
+                <div class="row justify-content-between">
+
+                    <div class="col-12 col-md-6 col-lg-5">
+                        <div class="single_product_thumb">
+                            <div id="product_details_slider" class="carousel slide" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <a class="product-img" href="{{crop.crop_image.url}}" title="{{crop.title}}">
+                                        <img class="d-block w-100" src="{{crop.crop_image.url}}" alt="1">
+                                    </a>
+                                    </div>
+                                </div>
+                                <ol class="carousel-indicators">
+                                    <li class="active" data-target="#product_details_slider" data-slide-to="0" style="background-image: url('{{crop.crop_image.url}}');">
+                                    </li>
+                                    <li data-target="#product_details_slider" data-slide-to="1" style="background-image: url('{{crop.crop_image.url}}');">
+                                    </li>
+                                    <li data-target="#product_details_slider" data-slide-to="2" style="background-image: url('{{crop.crop_image.url}}');">
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="single_product_desc">
+                            <h4 class="title">{{crop.title}}</h4>
+                            <h4 class="price">{{crop.category}}</h4>
+                            <div class="short_overview">
+                                <p>{{crop.crop_description}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="product_details_tab clearfix">
+
+                      <ul class="nav nav-tabs border-0" id="myTab" role="tablist">
+                        <li class="nav-item"><a class="nav-link active" id="preparation-tab" data-toggle="tab" href="#preparation" role="tab" aria-controls="preparation" aria-selected="true">Crop Preparation</a></li>
+                        <li class="nav-item"><a class="nav-link" id="planting-tab" data-toggle="tab" href="#planting" role="tab" aria-controls="planting" aria-selected="false">Crop Planting</a></li>
+                        <li class="nav-item"><a class="nav-link" id="manage-tab" data-toggle="tab" href="#manage" role="tab" aria-controls="manage" aria-selected="false">Pest & Disease Management</a></li>
+                        <li class="nav-item"><a class="nav-link" id="risk-tab" data-toggle="tab" href="#risk" role="tab" aria-controls="risk" aria-selected="false">Risk Assessment</a></li>
+                      </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane fade show active" id="preparation" role="tabpanel" aria-labelledby="preparation-tab">
+                                <div class="description_area">
+                                    <p>{{crop.crop_preparation|linebreaks}}</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="planting" role="tabpanel" aria-labelledby="planting-tab">
+                                <div class="additional_info_area">
+                                    <p>{{crop.crop_planting|linebreaks}}</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="manage" role="tabpanel" aria-labelledby="manage-tab">
+                                <div class="reviews_area">
+                                   <p>{{crop.crop_management|linebreaks}}</p>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="risk" role="tabpanel" aria-labelledby="risk-tab">
+                                <div class="reviews_area">
+                                    {% if total_rain < total_dry %}
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Risk Assessment Pest Dry Season</th>
+                    <th scope="col">Control & Prevention</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <div class="card mb-4" id="forms">
+                      <div class="card-header">
+                          <p class="text-muted text-small mb-0" align="justify"><i>{{crop.crop_preparation|linebreaks}}</i></p>
+                      </div>
+                  </div>
+                    <th scope="row">{{crop.risk_dry_pest|linebreaks}}</th>
+                    <th scope="row">{{crop.prevention_dry_pest|linebreaks}}</th>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Risk Assessment Disease  Dry Season</th>
+                    <th scope="col">Control & Prevention</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">{{crop.risk_dry_disease|linebreaks}}</th>
+                    <th scope="row">{{crop.prevention_dry_disease|linebreaks}}</th>
+                  </tr>
+                </tbody>
+              </table>
+              {% else %}
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Risk Assessment Pest Rainy Season</th>
+                    <th scope="col">Control & Prevention</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row"><i>{{crop.risk_rainy_pest|linebreaks}}</i></td>
+                    <td scope="row"><i>{{crop.prevention_rainy_pest|linebreaks}}</i></td>
+                  </tr>
+                </tbody>
+              </table>
+              <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Risk Assessment Disease Rainy Season</th>
+                    <th scope="col">Control & Prevention</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td scope="row"><i>{{crop.risk_rainy_disease|linebreaks}}</i></td>
+                    <td scope="row"><i>{{crop.prevention_rainy_disease|linebreaks}}</i></td>
+                  </tr>
+                </tbody>
+              </table>
+              {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+{% endblock content %}
